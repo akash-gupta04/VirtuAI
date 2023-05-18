@@ -7,6 +7,7 @@ By using the following commands in any terminal in Windows Machine (powershell i
     
     pip install virtualenv venv
     .\venv\Scripts\activate.ps1 
+    
     (This command will create and activate the virtual environment named 'venv' in powershell.)
   
 Now, some necessary modules are required to install in order to run the code safely, using the pip command in the same environment.
@@ -18,6 +19,7 @@ Now, some necessary modules are required to install in order to run the code saf
     pip install termcolor
     
 After installing these modules, you must get your API keys from 
+
     https://openweathermap.org/ : for weather API and replace it with the text 'API_KEY' in weather.py file.
     https://newsapi.org/        : for news API and replace it with the text 'YOUR_API_KEY' in news.py file.
 
