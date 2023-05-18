@@ -19,7 +19,6 @@ Now, some necessary modules are required to install in order to run the code saf
     pip install termcolor
     
 After installing these modules, you must get your API keys from 
-
     https://openweathermap.org/ : for weather API and replace it with the text 'API_KEY' in weather.py file.
     https://newsapi.org/        : for news API and replace it with the text 'YOUR_API_KEY' in news.py file.
 
