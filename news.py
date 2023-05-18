@@ -1,7 +1,7 @@
 from newsapi import NewsApiClient
 import random
 from termcolor import colored
-newsapi = NewsApiClient(api_key='247ece99b66d48929b6aa3b541ac168f')
+newsapi = NewsApiClient(api_key='YOUR_API_KEY')
 
 def get_news(category):
     """This method generates news using 'news Api'."""
