@@ -10,6 +10,7 @@ By using the following commands in any terminal in Windows Machine (powershell i
     (This command will create and activate the virtual environment named 'venv' in powershell.)
   
 Now, some necessary modules are required to install in order to run the code safely, using the pip command in the same environment.
+   
     pip install requests
     pip install kivy
     pip install kivymd
