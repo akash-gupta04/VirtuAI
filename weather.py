@@ -1,7 +1,7 @@
 import requests
 
 def get_current_weather(city):
-    api_key = '9e80eda717e6dbd0350bb3a15091bd43'
+    api_key = 'API_KEY'
     url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
     response = requests.get(url)
     data = response.json()
