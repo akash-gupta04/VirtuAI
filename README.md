@@ -2,7 +2,7 @@
 It is my first project build on python using python kivymd library.
 
 You will need to create a virtual environment, before running the 'chatbot.py' file. 
-I have used python 3.7.4 for this project.
+I have used python 3.7.4 and kivy 2.1.0 for this project.
 By using the following commands in any terminal in Windows Machine (powershell is recommended):
     
     pip install virtualenv venv
