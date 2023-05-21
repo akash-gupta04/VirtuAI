@@ -1,4 +1,3 @@
-from symbol import parameters
 from kivy.clock import Clock
 from kivymd.app import MDApp
 from kivy.lang import Builder
@@ -7,12 +6,9 @@ from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.label import MDLabel
 from kivy.properties import StringProperty, NumericProperty 
 from kivy.core.text import LabelBase
-from intents import intents
-import random
 from news import get_news
 from weather import get_current_weather
-
-Window.size = (350,550)
+from openAPI import chat_Completion
 
 class Command(MDLabel):
     text = StringProperty()
@@ -49,70 +45,33 @@ class ChatBot(MDApp):
             """This method sets bot name."""
 
     def response(self, *args):
-        user_input = value
-        matched_intent = None
-        for intent in intents:
-            for pattern in intent['patterns']:
-                if user_input.lower() == pattern:
-                    matched_intent = intent
-                    break
-            if matched_intent:
-                break
-        if matched_intent:
-            if 'greeting' in matched_intent['name']:
-                response = random.choice(matched_intent['responses'])+"\n"
-                #print(response)
-                news_intents = []
-                for intent in intents:
-                    if 'news' in intent['name']:
-                        news_intents.append(intent['name'])
-                news_categories = "\n- ".join([intent.replace('_news', '') for intent in news_intents])
-                response += f"\nHere are the available news categories:\n- {news_categories}"
-                #print(response)
-            elif 'business_news' in matched_intent['name']:
-                articles = get_news("business")
-                if articles:
-                    response = random.choice(matched_intent['responses'])+ articles
-                    #print(response)
-            elif 'entertainment_news' in matched_intent['name']:
-                articles = get_news("entertainment")
-                if articles:
-                    response = random.choice(matched_intent['responses'])+ articles
-                    #print(response)
-            elif 'sports_news' in matched_intent['name']:
-                articles = get_news("sports")
-                if articles:
-                    response = random.choice(matched_intent['responses'])+ articles
-                    #print(response)
-            elif 'science_news' in matched_intent['name']:
-                articles = get_news("science")
-                if articles:
-                    response = random.choice(matched_intent['responses'])+ articles
-                    #print(response)
-            elif 'technology_news' in matched_intent['name']:
-                articles = get_news("technology")
-                if articles:
-                    response = random.choice(matched_intent['responses'])+ articles
-                    #print(response)
-            elif 'sports_news' in matched_intent['name']:
-                articles = get_news("sports")
-                if articles:
-                    response = random.choice(matched_intent['responses'])+ articles
-                    #print(response)
-            elif 'health_news' in matched_intent['name']:
-                articles = get_news("health")
-                if articles:
-                    response = random.choice(matched_intent['responses'])+ articles
-                    #print(response)
-            elif  'weather' in matched_intent['name']:
-                    location = "Jammu"
-                    weather= get_current_weather(location)
-                    if weather:
-                        response = random.choice(matched_intent['responses']) + weather
-            else:
-                response = random.choice(matched_intent['responses'])
+        query = value
+        if 'news'.lower() in query.lower():
+            categories = ['business', 'technology', 'sports', 'science', 'entertainment', 'health','weather']
+            response = "Here, are some available categories for News:"
+            for category in categories:
+                response += "\n* " + category
+            # print(response)
+        elif 'business'.lower() in query.lower():
+            response = get_news("business")
+        elif 'sports'.lower() in query.lower():
+            response = get_news("sports")
+        elif 'tech'.lower() in query.lower():
+            response = get_news("technology")
+        elif 'science'.lower() in query.lower():
+            response = get_news("science")
+        elif 'tech'.lower() in query.lower():
+            response = get_news("technology")
+        elif 'health'.lower() in query.lower():
+            response = get_news("health")
+        elif 'entertainment'.lower() in query.lower():
+            response = get_news("entertainment")
+        elif 'weather'.lower() in query.lower():
+            response = get_current_weather("Jammu")
+            # print(response)
         else:
-            response = "I'm sorry, I don't understand."
+            response = chat_Completion(query)
+            #print(response)
         screen_manager.get_screen('chats').chat_list.add_widget(Response(text=response,size_hint_x = .80))
         """This method will generates response ."""
 
