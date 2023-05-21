@@ -35,6 +35,7 @@ class ChatBot(MDApp):
 
     def build(self):
         global screen_manager
+        self.icon = 'icon.png'
         screen_manager = ScreenManager()
         screen_manager.add_widget(Builder.load_file("Main.kv"))
         screen_manager.add_widget(Builder.load_file("Chats.kv"))
