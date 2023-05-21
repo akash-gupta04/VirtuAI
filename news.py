@@ -1,8 +1,6 @@
-from newsapi import NewsApiClient
 import random
-from termcolor import colored
-newsapi = NewsApiClient(api_key='YOUR_API_KEY')
-
+from newsapi import NewsApiClient
+newsapi = NewsApiClient(api_key='247ece99b66d48929b6aa3b541ac168f')
 def get_news(category):
     """This method generates news using 'news Api'."""
     top_headlines = newsapi.get_top_headlines(
@@ -13,8 +11,6 @@ def get_news(category):
     article = random.choice(articles)
     Title = article['title']
     Description = article['description']
-    Url = article['url']
-    text = f"\n\n{Title}\n\n{Description}\n\n{Url}"
+    text = f"Title: {Title}\n\n{Description}"
     return text
-#print(get_news("sports"))
-
+# print(get_news("sports"))
