@@ -25,3 +25,6 @@ After installing these modules, you must get your API keys from
 Now, you're are all set to use this chatbot. 
 
 By running the chatbot.py file in the enironment. 
+
+
+All rights reserved ©Akashthepro
