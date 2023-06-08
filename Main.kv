@@ -1,6 +1,5 @@
 MDScreen:
     name: "main"
-    bot_name: bot_name
     MDFloatLayout:
         md_bg_color: 1, 1, 1, 1
         Image:
@@ -8,60 +7,20 @@ MDScreen:
             size_hint: .8, .5
             pos_hint: {"center_x": .55, "center_y": .8}
         MDLabel:
-            text: "Hello Sir!"
-            font_name: "Sk-Modernist-Bold.ttf"
-            font_size: "35sp"
-            pos_hint :{"center_x": .5, "center_y": .58}
-            halign: "center"
-            theme_text_color: "Custom"
-            text_color: 53/255, 56/255, 60/255, 1
-        MDLabel:
             text: "Unleash the power of technology at your fingertips"
             size_hint_x: .9
-            font_name: "Sk-Modernist-Bold.ttf"
-            font_size: "50px"
+            font_name: "Sk-Modernist-Regular"
+            font_size: "18sp"
             pos_hint : {"center_x": .5, "center_y": .45}
             halign: "center"
             theme_text_color: "Custom"
             text_color: 53/255, 56/255, 60/255, 1
-        MDLabel:
-            text: "Read Me First"
-            font_name: "Sk-Modernist-Regular.ttf"
-            font_size: "18sp"
-            pos_hint : {"center_x": .5, "center_y": .33}
-            halign: "center"
-            underline: "True"
-            theme_text_color: "Custom"
-            text_color: 2/255,49/255,75/255,255/255
-        MDFloatLayout:
-            size_hint: .85, .08
-            pos_hint : {"center_x": .5, "center_y": .22}   
-            canvas:
-                Color:
-                    rgb: (238/255, 238/255, 238/255, 1)      
-                RoundedRectangle:
-                    size: self.size
-                    pos: self.pos
-                    radius: [22, 22, 22, 22]
-            TextInput:
-                id: bot_name
-                hint_text: "Chatbot Name"
-                size_hint: 1, None
-                pos_hint : {"center_x": .5, "center_y": .5}
-                font_size: "18sp"
-                height: self.minimum_height
-                cursor_color: 2/255,49/255,75/255,255/255
-                cursor_width: "2sp"
-                foreground_color: 2/255,49/255,75/255,255/255
-                background_color: 0,0,0,0
-                padding: 15
-                font_name: "Sk-Modernist-Regular.ttf"
         MDFloatLayout:
             size_hint: .45, .08
             pos_hint : {"center_x": .5, "center_y": .1}   
             canvas:
                 Color:
-                    rgb: (2/255,49/255,75/255,255/255)      
+                    rgb: (135/255, 206/255, 235/255,1)
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -71,20 +30,12 @@ MDScreen:
             size_hint: .45, .08
             radius:{65.5, 65.5, 65.5, 65.5}
             pos_hint : {"center_x": .5, "center_y": .1}
-            background_color: 135/255, 206/255, 235/255, 1/255
-            on_release:
-                app.bot_name()
+            background_color: 0,0,0,0
+            on_release: app.root.current = "chats"
         MDLabel: 
             text: "Let's Chat"
             halign: "center"
             pos_hint: {"center_y": .1}
-            font_name: "Sk-Modernist-Bold.ttf"
-            font_size: "50px"
-            color: 
-            rgb: (255/255, 255/255, 255/255, 1/255)
-
-
-
-
-
-
+            font_name: "Sk-Modernist-Bold"
+            font_size: "18sp"
+            color: 1,1,1,1
