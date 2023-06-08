@@ -47,12 +47,18 @@ class ChatBot(MDApp):
 
     def response(self, *args):
         query = value
-        if 'news'.lower() in query.lower():
-            categories = ['business', 'technology', 'sports', 'science', 'entertainment', 'health','weather']
-            response = "Here, are some available categories for News:"
-            for category in categories:
-                response += "\n* " + category
-            # print(response)
+        greeting = ["hello","hi","hey"]
+        greeting_response = ["Hello! How can I assist you today?","Hey!, How may I help you?"]
+        goodbye_response = ["Goodbye!, have a great day..","GoodBye!"]
+        goodbye = ["bye","goodbye"]
+        Thanks = ["thankyou","thank you so much","thanks alot"]
+        thanks_response = ["Welcome!, Is there any anything else you want?","I am glad you are satisfied with the response.."]
+        if query.lower() in greeting:
+            response = random.choice(greeting_response)
+        elif query.lower() in goodbye:
+            response = random.choice(goodbye_response)
+        elif query.lower() in Thanks:
+            response = random.choice(thanks_response)
         elif 'business'.lower() in query.lower():
             response = get_news("business")
         elif 'sports'.lower() in query.lower():
