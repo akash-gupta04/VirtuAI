@@ -10,18 +10,19 @@ from news import get_news
 from weather import get_current_weather
 from openAPI import chat_Completion
 
+
 class Command(MDLabel):
     text = StringProperty()
     size_hint_x =  NumericProperty()
     halign = StringProperty()
-    font_name = "Poppins"
+    font_name = "Sk-Modernist-Regular"
     font_size = 16
 
 class Response(MDLabel):
     text = StringProperty()
     size_hint_x =  NumericProperty()
     halign = StringProperty()
-    font_name = "Poppins"
+    font_name = "Sk-Modernist-Regular"
     font_size = 16
 
 class ChatBot(MDApp):
@@ -102,5 +103,5 @@ class ChatBot(MDApp):
             screen_manager.get_screen('chats').text_input.text = ""
 
 if __name__ == '__main__':
-    LabelBase.register(name="Poppins", fn_regular="Poppins-Regular.ttf")
+    LabelBase.register(name="Sk-Modernist-Regular", fn_regular="Sk-Modernist-Regular.ttf")
     ChatBot().run()

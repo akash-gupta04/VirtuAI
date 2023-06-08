@@ -9,24 +9,24 @@ MDScreen:
             pos_hint: {"center_x": .55, "center_y": .8}
         MDLabel:
             text: "Hello Sir!"
-            font_name: "Poppins-SemiBold.ttf"
+            font_name: "Sk-Modernist-Bold.ttf"
             font_size: "35sp"
             pos_hint :{"center_x": .5, "center_y": .58}
             halign: "center"
             theme_text_color: "Custom"
             text_color: 53/255, 56/255, 60/255, 1
         MDLabel:
-            text: "Your Digital Assistant. I will give you latest News updates..."
+            text: "Unleash the power of technology at your fingertips"
             size_hint_x: .9
-            font_name: "Poppins"
-            font_size: "18sp"
+            font_name: "Sk-Modernist-Bold.ttf"
+            font_size: "50px"
             pos_hint : {"center_x": .5, "center_y": .45}
             halign: "center"
             theme_text_color: "Custom"
             text_color: 53/255, 56/255, 60/255, 1
         MDLabel:
             text: "Read Me First"
-            font_name: "Poppins"
+            font_name: "Sk-Modernist-Regular.ttf"
             font_size: "18sp"
             pos_hint : {"center_x": .5, "center_y": .33}
             halign: "center"
@@ -55,7 +55,7 @@ MDScreen:
                 foreground_color: 2/255,49/255,75/255,255/255
                 background_color: 0,0,0,0
                 padding: 15
-                font_name: "Poppins"
+                font_name: "Sk-Modernist-Regular.ttf"
         MDFloatLayout:
             size_hint: .45, .08
             pos_hint : {"center_x": .5, "center_y": .1}   
@@ -69,17 +69,19 @@ MDScreen:
         Button:
             text: ""
             size_hint: .45, .08
+            radius:{65.5, 65.5, 65.5, 65.5}
             pos_hint : {"center_x": .5, "center_y": .1}
-            background_color: 0,0,0,0
+            background_color: 135/255, 206/255, 235/255, 1/255
             on_release:
                 app.bot_name()
         MDLabel: 
-            text: "LET'S CHAT"
+            text: "Let's Chat"
             halign: "center"
             pos_hint: {"center_y": .1}
-            font_name: "Poppins-SemiBold.ttf"
-            font_size: "18sp"
-            color: 1, 1, 1, 1
+            font_name: "Sk-Modernist-Bold.ttf"
+            font_size: "50px"
+            color: 
+            rgb: (255/255, 255/255, 255/255, 1/255)
 
 
 

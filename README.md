@@ -27,4 +27,4 @@ Now, you're are all set to use this chatbot.
 By running the chatbot.py file in the enironment. 
 
 
-All rights reserved ©Akashthepro @Utkarshsharma1706
+All rights reserved ©Akashthepro
