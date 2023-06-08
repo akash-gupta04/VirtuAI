@@ -1,3 +1,4 @@
+import random
 from kivy.clock import Clock
 from kivymd.app import MDApp
 from kivy.lang import Builder
