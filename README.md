@@ -1,4 +1,4 @@
-# ChatBot-Jarvis
+# VirtuAI
 It is my first project build on python using python kivymd library.
 
 You will need to create a virtual environment, before running the 'chatbot.py' file. 
