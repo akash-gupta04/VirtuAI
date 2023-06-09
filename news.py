@@ -1,6 +1,6 @@
 import random
 from newsapi import NewsApiClient
-newsapi = NewsApiClient(api_key='247ece99b66d48929b6aa3b541ac168f')
+newsapi = NewsApiClient(api_key='Your_API_key')
 def get_news(category):
     """This method generates news using 'news Api'."""
     top_headlines = newsapi.get_top_headlines(
