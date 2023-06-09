@@ -11,20 +11,24 @@ from news import get_news
 from weather import get_current_weather
 from openAPI import chat_Completion
 
-#Window.size = (355,555)
 
+# Window.size = (360,800)
 class Command(MDLabel):
     text = StringProperty()
     size_hint_x = NumericProperty()
     halign = StringProperty()
     font_name = "Sk-Modernist-Regular"
     font_size = 16
+
+
 class Response(MDLabel):
     text = StringProperty()
     size_hint_x = NumericProperty()
     halign = StringProperty()
     font_name = "Sk-Modernist-Regular"
     font_size = 16
+
+
 class ChatBot(MDApp):
     def change_screen(self, name):
         screen_manager.current = name
@@ -48,7 +52,7 @@ class ChatBot(MDApp):
         Thanks = ["thankyou", "thank you so much", "thanks alot"]
         thanks_response = ["Welcome!, Is there any anything else you want?",
                            "I am glad you are satisfied with the response.."]
-        locations = ["Jammu","Srinagar","Delhi","Banglore","Mumbai"]
+        # locations = ["Jammu","Srinagar","Delhi","Bangalore","Mumbai"]
         if query.lower() in greeting:
             response = random.choice(greeting_response)
         elif query.lower() in goodbye:
@@ -75,7 +79,7 @@ class ChatBot(MDApp):
         else:
             response = chat_Completion(query)
             # print(response)
-        screen_manager.get_screen('chats').chat_list.add_widget(Response(text=response, size_hint_x=.40,halign = "left"))
+        screen_manager.get_screen('chats').chat_list.add_widget(Response(text=response, size_hint_x=.40, halign="left"))
         """This method will generates response ."""
 
     def send(self):
@@ -101,10 +105,12 @@ class ChatBot(MDApp):
                 size = .60
                 halign = "center"
             screen_manager.get_screen('chats').chat_list.add_widget(
-                Command(text=value, size_hint_x=size,halign=halign))
+                Command(text=value, size_hint_x=size, halign=halign))
             Clock.schedule_once(self.response, 2)
             screen_manager.get_screen('chats').text_input.text = ""
 
+
 if __name__ == '__main__':
-    LabelBase.register(name="Sk-Modernist-Regular", fn_regular="Sk-Modernist-Regular.ttf",fn_bold="Sk-Modernist-Bold.ttf")
+    LabelBase.register(name="Sk-Modernist-Regular", fn_regular="Sk-Modernist-Regular.ttf",
+                       fn_bold="Sk-Modernist-Bold.ttf")
     ChatBot().run()
