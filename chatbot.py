@@ -11,7 +11,6 @@ from news import get_news
 from weather import get_current_weather
 from openAPI import chat_Completion
 
-Window.Size = (400, 555)
 class Command(MDLabel):
     text = StringProperty()
     size_hint_x = NumericProperty()
@@ -47,6 +46,7 @@ class ChatBot(MDApp):
         Thanks = ["thankyou", "thank you so much", "thanks alot"]
         thanks_response = ["Welcome!, Is there any anything else you want?",
                            "I am glad you are satisfied with the response.."]
+        locations = ["Jammu","Srinagar","Delhi","Banglore","Mumbai"]
         if query.lower() in greeting:
             response = random.choice(greeting_response)
         elif query.lower() in goodbye:
@@ -71,10 +71,9 @@ class ChatBot(MDApp):
             response = get_current_weather("Jammu")
             # print(response)
         else:
-            response = "Sorry"
-            #response = chat_Completion(query)
+            response = chat_Completion(query)
             # print(response)
-        screen_manager.get_screen('chats').chat_list.add_widget(Response(text=response, size_hint_x=.80))
+        screen_manager.get_screen('chats').chat_list.add_widget(Response(text=response, size_hint_x=.40,halign = "left"))
         """This method will generates response ."""
 
     def send(self):
@@ -82,28 +81,28 @@ class ChatBot(MDApp):
         if screen_manager.get_screen('chats').text_input != "":
             value = screen_manager.get_screen('chats').text_input.text
             if len(value) < 6:
-                size = .22
+                size = .15
                 halign = "center"
             elif len(value) < 11:
-                size = .32
+                size = .20
                 halign = "center"
             elif len(value) < 16:
-                size = .45
+                size = .30
                 halign = "center"
             elif len(value) < 21:
-                size = .58
+                size = .40
                 halign = "center"
             elif len(value) < 26:
-                size = .71
+                size = .50
                 halign = "center"
             else:
-                size = .77
-                halign = "left"
+                size = .60
+                halign = "center"
             screen_manager.get_screen('chats').chat_list.add_widget(
-                Command(text=value, size_hint_x=size, halign="halign"))
+                Command(text=value, size_hint_x=size,halign=halign))
             Clock.schedule_once(self.response, 2)
             screen_manager.get_screen('chats').text_input.text = ""
 
 if __name__ == '__main__':
-    LabelBase.register(name="Sk-Modernist-Regular", fn_regular="Sk-Modernist-Regular.ttf")
+    LabelBase.register(name="Sk-Modernist-Regular", fn_regular="Sk-Modernist-Regular.ttf",fn_bold="Sk-Modernist-Bold.ttf")
     ChatBot().run()
