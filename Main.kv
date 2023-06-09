@@ -1,41 +1,174 @@
 MDScreen:
     name: "main"
     MDFloatLayout:
-        md_bg_color: 1, 1, 1, 1
-        Image:
-            source: "chatbots.png"
-            size_hint: .8, .5
-            pos_hint: {"center_x": .55, "center_y": .8}
-        MDLabel:
-            text: "Unleash the power of technology at your fingertips"
-            size_hint_x: .9
-            font_name: "Sk-Modernist-Bold"
-            font_size: "18sp"
-            pos_hint : {"center_x": .5, "center_y": .45}
-            halign: "center"
-            theme_text_color: "Custom"
-            text_color: 53/255, 56/255, 60/255, 1
-        MDFloatLayout:
-            size_hint: .45, .08
-            pos_hint : {"center_x": .5, "center_y": .1}   
-            canvas:
-                Color:
-                    rgb: (135/255, 206/255, 235/255,1)
-                RoundedRectangle:
-                    size: self.size
-                    pos: self.pos
-                    radius: [22, 22, 22, 22]
-        Button:
-            text: ""
-            size_hint: .45, .08
-            radius:{65.5, 65.5, 65.5, 65.5}
-            pos_hint : {"center_x": .5, "center_y": .1}
-            background_color: 0,0,0,0
-            on_release: app.root.current = "chats"
-        MDLabel: 
-            text: "Let's Chat"
-            halign: "center"
-            pos_hint: {"center_y": .1}
-            font_name: "Sk-Modernist-Bold"
-            font_size: "18sp"
-            color: 1,1,1,1
+        MDBoxLayout:
+            orientation: "horizontal"
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_x: 1.5
+                size_hint_y: 1
+                padding: "10dp"
+                canvas.before:
+                    Color:
+                        rgba:  135/255, 206/255, 235/255,1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                MDFloatLayout:
+                    MDIcon:
+                        pos_hint : {"center_x":.5,"center_y": .80}
+                        icon: 'white-balance-sunny'
+                        halign: 'center'
+                        valign: 'middle'
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .75}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Examples"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .65}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Explain quantum computing in simple terms"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .50}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Explain quantum computing in simple terms"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .35}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Explain quantum computing in simple terms"
+                        halign: "center"
+                        color: 1,1,1,1
+                MDFloatLayout:
+                    MDIcon:
+                        pos_hint : {"center_x":.5,"center_y": .80}
+                        icon: 'lightning-bolt-outline'
+                        halign: 'center'
+                        valign: 'middle'
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .75}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Capabilities"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .65}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Remembers what user said earlier in the conversation"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .50}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Remembers what user said earlier in the conversation"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .35}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Remembers what user said earlier in the conversation"
+                        halign: "center"
+                        color: 1,1,1,1
+                MDFloatLayout:
+                    MDIcon:
+                        pos_hint : {"center_x":.5,"center_y": .80}
+                        icon: 'alert-outline'
+                        halign: 'center'
+                        valign: 'middle'
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .75}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "Limitations"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .65}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "May occasionally generate incorrect information"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .50}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "May occasionally generate incorrect information"
+                        halign: "center"
+                        color: 1,1,1,1
+                    MDLabel:
+                        pos_hint : {"center_x":.5,"center_y": .35}
+                        font_name: "Sk-Modernist-Regular"
+                        font_size: "18sp"
+                        text: "May occasionally generate incorrect information"
+                        halign: "center"
+                        color: 1,1,1,1
+            MDFloatLayout:
+                padding: "10dp"
+                canvas.before:
+                    Color:
+                        rgba:  1,1,1,1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                Image:
+                    source: "chatbots.png"
+                    size_hint: .8, .5
+                    pos_hint: {"center_x": .55, "center_y": .8}
+                MDLabel:
+                    text: "Unleash the power of technology at your fingertips"
+                    size_hint_x: .9
+                    font_name: "Sk-Modernist-Bold"
+                    font_size: "18sp"
+                    pos_hint : {"center_x": .5, "center_y": .45}
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 53/255, 56/255, 60/255, 1
+                MDFloatLayout:
+                    size_hint: .45, .08
+                    pos_hint : {"center_x": .5, "center_y": .1}
+                    canvas:
+                        Color:
+                            rgb: (135/255, 206/255, 235/255,1)
+                        RoundedRectangle:
+                            size: self.size
+                            pos: self.pos
+                            radius: [22, 22, 22, 22]
+                Button:
+                    text: ""
+                    size_hint: .45, .08
+                    radius:{65.5, 65.5, 65.5, 65.5}
+                    pos_hint : {"center_x": .5, "center_y": .1}
+                    background_color: 0,0,0,0
+                    on_release: app.root.current = "chats"
+                MDLabel:
+                    text: "Let's Chat"
+                    halign: "center"
+                    pos_hint: {"center_x": 0.5,"center_y": .1}
+                    font_name: "Sk-Modernist-Bold"
+                    font_size: "18sp"
+                    color: 1,1,1,1
+                MDFloatLayout:
+                    MDLabel:
+                        pos_hint : {"center_x":.75,"center_y": .9}
+                        text: "OctoGPT"
+                        halign: "center"
+                        font_name: "Sk-Modernist-Bold"
+                        font_size: "25sp"
+                        color: 1,1,1,1
