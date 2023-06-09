@@ -1,10 +1,11 @@
 <Command>
     size_hint_y: None
-    pos_hint: {"right": .98}
+    pos_hint: {"right": .95}
     height: self.texture_size[1]
-    padding: 12, 10
+    padding: 10, 10
     theme_text_color: "Custom"
     text_color: 1, 1, 1, 1
+
     canvas.before:
         Color:
             rgb: (135/255, 206/255, 235/255,1)
@@ -14,9 +15,10 @@
             radius: [23, 23, 0, 23]
 <Response>
     size_hint_y: None
-    pos_hint: {"x": 0}
+    pos_hint: {"right": 0.45}
     height: self.texture_size[1]
-    padding: 12, 10
+    padding: 10, 10
+    theme_text_color: "Custom"
     text_color: 1, 1, 1, 1
     canvas.before:
         Color:
@@ -45,7 +47,7 @@ MDScreen:
                 text_color: (135/255, 206/255, 235/255,1)
         ScrollView:
             size_hint_y: .75
-            pos_hint: {"x": 0, "y": .116}
+            pos_hint: {"x": 0, "y": .110}
             do_scroll_x: False
             do_scroll_y: True
             BoxLayout:
@@ -58,14 +60,14 @@ MDScreen:
                 cols: 1
                 spacing: 5
         MDFloatLayout:
-            md_bg_color: 245/255, 245/255, 245/255, 1
-            size_hint_y: .11
+            md_bg_color: 1,1,1,1
+            size_hint_y: .10
             MDFloatLayout:
                 size_hint: .75, .75
-                pos_hint : {"center_x": .40, "center_y": .5}
+                pos_hint : {"center_x": .5, "center_y": .5}
                 canvas:
                     Color:
-                        rgb: (238/255, 238/255, 238/255, 1)      
+                        rgb: (238/255, 238/255, 238/255, 1)
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
@@ -73,8 +75,8 @@ MDScreen:
                 TextInput:
                     id: text_input
                     hint_text: "Type your message..."
-                    size_hint: .50,None
-                    pos_hint : {"center_x": 0.25, "center_y": .5}
+                    size_hint: 1,None
+                    pos_hint : {"center_x": 0.5, "center_y": 0.5}
                     font_size: "16sp"
                     height: self.minimum_height
                     cursor_color: 0,0,0,1
