@@ -11,6 +11,8 @@ from news import get_news
 from weather import get_current_weather
 from openAPI import chat_Completion
 
+#Window.size = (355,555)
+
 class Command(MDLabel):
     text = StringProperty()
     size_hint_x = NumericProperty()
