@@ -29,7 +29,7 @@ class Response(MDLabel):
     font_size = 16
 
 
-class ChatBot(MDApp):
+class VirtuAI(MDApp):
     def change_screen(self, name):
         screen_manager.current = name
         """This method will change screen."""
@@ -81,7 +81,6 @@ class ChatBot(MDApp):
             # print(response)
         screen_manager.get_screen('chats').chat_list.add_widget(Response(text=response, size_hint_x=.40, halign="left"))
         """This method will generates response ."""
-
     def send(self):
         global size, halign, value
         if screen_manager.get_screen('chats').text_input != "":
@@ -109,8 +108,7 @@ class ChatBot(MDApp):
             Clock.schedule_once(self.response, 2)
             screen_manager.get_screen('chats').text_input.text = ""
 
-
 if __name__ == '__main__':
     LabelBase.register(name="Sk-Modernist-Regular", fn_regular="Sk-Modernist-Regular.ttf",
                        fn_bold="Sk-Modernist-Bold.ttf")
-    ChatBot().run()
+    VirtuAI().run()
