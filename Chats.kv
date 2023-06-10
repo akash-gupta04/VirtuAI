@@ -31,7 +31,7 @@ MDScreen:
     text_input: text_input
     chat_list: chat_list
     name: "chats"
-    MDFloatLayout: 
+    MDFloatLayout:
         MDFloatLayout:
             md_bg_color: 245/255, 245/255, 245/255, 1
             size_hint_y: .11
@@ -59,6 +59,16 @@ MDScreen:
                 pos_hint: {'top': 10}
                 cols: 1
                 spacing: 5
+        MDFloatLayout:
+            MDLabel:
+                id: my_label
+                text: "Welcome, friend! I'm your energetic bot, eager to assist and ignite your experience. How can I add a spark of excitement to your day?"
+                halign: 'center'
+                font_size: "16sp"
+                font_name: "Sk-Modernist-Regular"
+                size_hint_x: .5
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                on_touch_down: self.opacity = 0
         MDFloatLayout:
             md_bg_color: 1,1,1,1
             size_hint_y: .10
