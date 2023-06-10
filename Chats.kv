@@ -61,14 +61,13 @@ MDScreen:
                 spacing: 5
         MDFloatLayout:
             MDLabel:
-                id: my_label
+                id: welcome_message
                 text: "Welcome, friend! I'm your energetic bot, eager to assist and ignite your experience. How can I add a spark of excitement to your day?"
                 halign: 'center'
                 font_size: "16sp"
                 font_name: "Sk-Modernist-Regular"
                 size_hint_x: .5
                 pos_hint: {'center_x': .5, 'center_y': .5}
-                on_touch_down: self.opacity = 0
         MDFloatLayout:
             md_bg_color: 1,1,1,1
             size_hint_y: .10
@@ -95,6 +94,7 @@ MDScreen:
                     background_color: 0,0,0,0
                     padding: 15
                     font_name: "Sk-Modernist-Regular"
+                    on_touch_down: welcome_message.opacity = 0
                 MDIconButton:
                     icon: "send"
                     pos_hint : {"center_x": 1.1, "center_y": .5}
