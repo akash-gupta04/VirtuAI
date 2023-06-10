@@ -20,7 +20,6 @@ class Command(MDLabel):
     font_name = "Sk-Modernist-Regular"
     font_size = 16
 
-
 class Response(MDLabel):
     text = StringProperty()
     size_hint_x = NumericProperty()
@@ -28,11 +27,10 @@ class Response(MDLabel):
     font_name = "Sk-Modernist-Regular"
     font_size = 16
 
-
 class VirtuAI(MDApp):
+
     def change_screen(self, name):
         screen_manager.current = name
-        """This method will change screen."""
 
     def build(self):
         global screen_manager
@@ -40,9 +38,14 @@ class VirtuAI(MDApp):
         screen_manager = ScreenManager()
         screen_manager.add_widget(Builder.load_file("Main.kv"))
         screen_manager.add_widget(Builder.load_file("Chats.kv"))
-        """This method links python code with kv files."""
         return screen_manager
 
+    def hide_label(self, *args):
+        self.root.ids.my_label.opacity = 0
+        Clock.schedule_once(self.show_label, 3)
+
+    def show_label(self, dt):
+        self.root.ids.my_label.opacity = 1
     def response(self, *args):
         query = value
         greeting = ["hello", "hi", "hey"]
@@ -81,6 +84,7 @@ class VirtuAI(MDApp):
             # print(response)
         screen_manager.get_screen('chats').chat_list.add_widget(Response(text=response, size_hint_x=.40, halign="left"))
         """This method will generates response ."""
+
     def send(self):
         global size, halign, value
         if screen_manager.get_screen('chats').text_input != "":
