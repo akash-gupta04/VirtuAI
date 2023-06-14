@@ -1,0 +1,105 @@
+<Command>
+    size_hint_y: None
+    pos_hint: {"right": .95}
+    height: self.texture_size[1]
+    padding: 10, 10
+    theme_text_color: "Custom"
+    text_color: 1, 1, 1, 1
+
+    canvas.before:
+        Color:
+            rgb: (135/255, 206/255, 235/255,1)
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [23, 23, 0, 23]
+<Response>
+    size_hint_y: None
+    pos_hint: {"right": 0.45}
+    height: self.texture_size[1]
+    padding: 10, 10
+    theme_text_color: "Custom"
+    text_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgb: (135/255, 206/255, 235/255,1)
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [23, 23, 23, 0]
+MDScreen:
+    text_input: text_input
+    chat_list: chat_list
+    name: "chats"
+    MDFloatLayout:
+        MDFloatLayout:
+            md_bg_color: 245/255, 245/255, 245/255, 1
+            size_hint_y: .11
+            pos_hint : {"center_y": .95}
+            MDLabel:
+                id: bot_name
+                text: "VirtuAI"
+                pos_hint : {"center_y": .5}
+                halign: "center"
+                font_name: "fonts/Sk-Modernist-Bold.ttf"
+                font_size: "25sp"
+                theme_text_color: "Custom"
+                text_color: (135/255, 206/255, 235/255,1)
+        ScrollView:
+            size_hint_y: .75
+            pos_hint: {"x": 0, "y": .110}
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                id: chat_list
+                orientation: 'vertical'
+                size: (root.width, root.height)
+                height: self.minimum_height
+                size_hint: None, None
+                pos_hint: {'top': 10}
+                cols: 1
+                spacing: 5
+        MDFloatLayout:
+            MDLabel:
+                id: welcome_message
+                text: "Welcome, friend! I'm your energetic bot, eager to assist and ignite your experience. How can I add a spark of excitement to your day?"
+                halign: 'center'
+                font_size: "16sp"
+                font_name: "Sk-Modernist"
+                size_hint_x: .5
+                pos_hint: {'center_x': .5, 'center_y': .5}
+        MDFloatLayout:
+            md_bg_color: 1,1,1,1
+            size_hint_y: .10
+            MDFloatLayout:
+                size_hint: .75, .75
+                pos_hint : {"center_x": .5, "center_y": .5}
+                canvas:
+                    Color:
+                        rgb: (238/255, 238/255, 238/255, 1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius:{57,57,57,57}
+                TextInput:
+                    id: text_input
+                    hint_text: "Type your message..."
+                    size_hint: 1,None
+                    pos_hint : {"center_x": 0.5, "center_y": 0.5}
+                    font_size: "16sp"
+                    height: self.minimum_height
+                    cursor_color: 0,0,0,1
+                    cursor_width: "2sp"
+                    foreground_color: 0,0,0,1
+                    background_color: 0,0,0,0
+                    padding: 15
+                    font_name: "Sk-Modernist"
+                    on_touch_down: welcome_message.opacity = 0
+                MDIconButton:
+                    icon: "send"
+                    pos_hint : {"center_x": 1.1, "center_y": .5}
+                    user_font_size: "16sp"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: 135/255, 206/255, 235/255,1
+                    on_release: app.send()
