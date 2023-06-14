@@ -16,7 +16,7 @@ from newsapi import NewsApiClient
 # Window.size = (360,800)
 
 def get_news(category):
-    newsapi = NewsApiClient(api_key='247ece99b66d48929b6aa3b541ac168f')
+    newsapi = NewsApiClient(api_key='your_api_key')
     """This method generates news using 'news Api'."""
     top_headlines = newsapi.get_top_headlines(
         country='in',
@@ -33,7 +33,7 @@ def get_news(category):
 # print(get_news("sports"))
 
 def get_current_weather(city):
-    api_key = '9e80eda717e6dbd0350bb3a15091bd43'
+    api_key = 'your_api_key'
     url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
     response = requests.get(url)
     data = response.json()
@@ -51,7 +51,7 @@ def get_current_weather(city):
 # print(get_current_weather("Jammu"))
 
 def chat_Completion(text):
-    openai.api_key = "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"
+    openai.api_key = "your_api_key"
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": f"{text}"}],
