@@ -1,0 +1,5 @@
+pip install requests
+pip install kivy
+pip install kivymd
+pip install newsapi-python
+pip install openai
