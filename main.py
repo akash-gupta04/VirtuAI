@@ -9,49 +9,55 @@ from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.label import MDLabel
 from kivy.properties import StringProperty, NumericProperty
 from kivy.core.text import LabelBase
-from newsapi import NewsApiClient
-
 
 
 # Window.size = (360,800)
 
-def get_news(category):
-    newsapi = NewsApiClient(api_key='your_api_key')
-    """This method generates news using 'news Api'."""
-    top_headlines = newsapi.get_top_headlines(
-        country='in',
-        category=category
-    )
-    articles = top_headlines.get('articles', [])
-    article = random.choice(articles)
-    Title = article['title']
-    Description = article['description']
-    text = f"Title: {Title}\n\n{Description}"
-    return text
-
-
-# print(get_news("sports"))
-
 def get_current_weather(city):
-    api_key = 'your_api_key'
+    api_key = 'api_key'  # Replace with your actual API key
     url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
-    response = requests.get(url)
-    data = response.json()
-    if data['cod'] == '404':
-        return None
-    else:
-        cloudiness = data['weather'][0]['description']
-        temperature = data['main']['temp']
-        feels_like = data['main']['feels_like']
-        humidity = data['main']['humidity']
-        wind_speed = data['wind']['speed']
-        return f"\nThe weather in {city}:\n\nCloudiness: {cloudiness}\nTemperature: {temperature}°C, feels like {feels_like}°C\nHumidity: {humidity}%\nWind Speed: {wind_speed} m/s."
+
+    try:
+        response = requests.get(url)
+        data = response.json()
+
+        # Check for invalid city or other API errors
+        if data.get('cod') == '404':
+            return f"City '{city}' not found."
+        elif data.get('cod') != 200:
+            return f"Error fetching weather data: {data.get('message', 'Unknown error')}"
+
+        # Safely access weather data using .get() to avoid KeyErrors
+        weather = data.get('weather', [])
+        if weather and len(weather) > 0:
+            cloudiness = weather[0].get('description', 'No description available')
+        else:
+            return f"No weather information available for '{city}'."
+
+        # Safely access other weather details
+        temperature = data.get('main', {}).get('temp', 'N/A')
+        feels_like = data.get('main', {}).get('feels_like', 'N/A')
+        humidity = data.get('main', {}).get('humidity', 'N/A')
+        wind_speed = data.get('wind', {}).get('speed', 'N/A')
+
+        # Return formatted weather details
+        return (f"\nThe weather in {city}:\n\n"
+                f"Cloudiness: {cloudiness.capitalize()}\n"
+                f"Temperature: {temperature}°C, feels like {feels_like}°C\n"
+                f"Humidity: {humidity}%\n"
+                f"Wind Speed: {wind_speed} m/s.")
+    
+    except requests.exceptions.RequestException as e:
+        return f"An error occurred while fetching the weather: {e}"
+    
+    except Exception as e:
+        return f"An unexpected error occurred: {e}"
 
 
 # print(get_current_weather("Jammu"))
 
 def chat_Completion(text):
-    openai.api_key = "your_api_key"
+    openai.api_key = 'api_key'
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": f"{text}"}],
@@ -111,7 +117,8 @@ class VirtuAI(MDApp):
         name = ["what is your name?", "who are you?", "your name?", "name"]
         name_response = ["I am VirtuAI developed by Akash Gupta and Utkarsh Gopal. You can ask anything who to....",
                          "I am VirtuAI, an AI chatbot model", "You can call me VirtuAI"]
-        # locations = ["Jammu","Srinagar","Delhi","Bangalore","Mumbai"]
+        locations = ["Jammu","Srinagar","Delhi","Bangalore","Mumbai"]
+        news = ['business','sports','technology','science','health','entertainment']
         if query.lower() in greeting:
             response = random.choice(greeting_response)
         elif query.lower() in goodbye:
@@ -122,22 +129,10 @@ class VirtuAI(MDApp):
             response = random.choice(name_response)
         elif query.lower() in name:
             response = random.choice(name_response)
-        elif 'business'.lower() in query.lower():
-            response = get_news("business")
-        elif 'sports'.lower() in query.lower():
-            response = get_news("sports")
-        elif 'tech'.lower() in query.lower():
-            response = get_news("technology")
-        elif 'science'.lower() in query.lower():
-            response = get_news("science")
-        elif 'tech'.lower() in query.lower():
-            response = get_news("technology")
-        elif 'health'.lower() in query.lower():
-            response = get_news("health")
-        elif 'entertainment'.lower() in query.lower():
-            response = get_news("entertainment")
+        elif query.lower() in locations:
+            response = random.choice
         elif 'weather'.lower() in query.lower():
-            response = get_current_weather("Jammu")
+            response = get_current_weather('Pune')
             # print(response)
         else:
             response = chat_Completion(query)
@@ -172,7 +167,7 @@ class VirtuAI(MDApp):
             Clock.schedule_once(self.response, 2)
             screen_manager.get_screen('chats').text_input.text = ""
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     LabelBase.register(name="Sk-Modernist", fn_regular="fonts/Sk-Modernist-Regular.ttf")
     VirtuAI().run()
